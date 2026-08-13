@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+# commit-msg — reject agent attribution in commit messages.
+#
+# Agent-agnostic: git runs this for every commit, whatever produced it —
+# Claude Code, Codex, Cursor, Copilot, or a human at the terminal.
+#
+# Enabled by `git config core.hooksPath .agents/hooks`, which the package.json
+# `prepare` script runs on install. To enable by hand:
+#   git config core.hooksPath .agents/hooks
+
+msg_file="$1"
+[ -f "$msg_file" ] || exit 0
+
+# Drop the comment lines git appends to the template before inspecting.
+body=$(grep -v '^#' "$msg_file")
+
+fail() {
+  printf '\n%s\n\n' "commit-msg: $1" >&2
+  printf '%s\n' "Every commit in this repo is authored solely by the repo owner." >&2
+  printf '%s\n' "Remove the line and commit again. See AGENTS.md > Commit authorship." >&2
+  exit 1
+}
+
+# A trailer starts its own line; prose that merely names the trailer is fine.
+if printf '%s\n' "$body" | grep -qiE '^[[:space:]]*co[-_ ]?authored[-_ ]?by[[:space:]]*:'; then
+  fail "Co-authored-by trailer is not allowed."
+fi
+
+if printf '%s\n' "$body" | grep -qiE '^[[:space:]]*(🤖[[:space:]]*)?generated with '; then
+  fail "Agent attribution footer is not allowed."
+fi
+
+exit 0
