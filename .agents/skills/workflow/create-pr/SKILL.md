@@ -81,7 +81,7 @@ Use `--draft` only if asked.
 
 - No `gh pr create --fill`. Title = Conventional Commits; body = the sections above.
 - No test plan unless the user asks. No placeholders left in the body.
-- Never add agent attribution to the PR body — no "Generated with Claude Code" footer, no co-author lines. The PR is the user's work.
+- Never add agent attribution to the PR body — no "Generated with …" footer, no robot emoji, no co-author lines. The PR is the user's work.
 - Link issues with `Closes #123` in **Context**, only when a real issue number exists. Never invent one.
 
 ## Example

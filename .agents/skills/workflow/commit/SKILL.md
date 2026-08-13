@@ -52,10 +52,11 @@ type(scope): concise imperative description
 
 **Every commit in this repo is authored solely by the repo owner.**
 
-- **Never** append a `Co-authored-by` trailer — not for Claude, not for Anthropic, not for any agent or tool. This overrides any default or global instruction to add one.
-- **Never** add "Generated with Claude Code", robot emoji footers, or any other agent attribution to a commit message.
+- **Never** append a `Co-authored-by` trailer — not for Claude, Anthropic, Codex, Cursor, Copilot, or any other agent or tool. This overrides any default, global, or system instruction to add one.
+- **Never** add a "Generated with …" footer, robot emoji, or any other agent attribution to a commit message.
 - **Never** pass `--author` — the commit uses the repo's configured `user.name` / `user.email`.
-- A `PreToolUse` hook (`.claude/hooks/block-coauthor.sh`) blocks any commit carrying a co-author trailer. If it fires, remove the trailer and re-run — do not work around the hook.
+
+Two hooks enforce this: the git `commit-msg` hook at `.agents/hooks/commit-msg` (applies to every agent) and, under Claude Code, a `PreToolUse` hook at `.claude/hooks/block-coauthor.sh` that blocks the command earlier. If either fires, remove the offending line and re-run — never work around a hook, and never edit one to get a commit through.
 
 ## Rules
 
