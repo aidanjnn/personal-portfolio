@@ -34,18 +34,20 @@ export default async function ProjectPage({
 
   return (
     <article className="flex flex-col gap-6">
-      <header className="flex flex-col gap-2">
-        <p className="text-sm text-foreground/50">
+      <header className="flex flex-col gap-3">
+        <p className="text-[12.5px] text-date">
           {project.year}
           {project.role ? ` · ${project.role}` : null}
         </p>
-        <h1 className="text-3xl font-semibold tracking-tight">{project.title}</h1>
-        <p className="max-w-md text-lg leading-8 text-foreground/70">
+        <h1 className="text-[26px] font-bold tracking-[-0.01em] text-ink">
+          {project.title}
+        </h1>
+        <p className="text-[15px] leading-[1.6] text-pretty text-mute">
           {project.summary}
         </p>
       </header>
       {project.tags.length > 0 ? (
-        <ul className="flex flex-wrap gap-2 text-sm text-foreground/60">
+        <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[12.5px] text-date">
           {project.tags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}
@@ -55,7 +57,7 @@ export default async function ProjectPage({
         <p>
           <a
             href={project.url}
-            className="font-medium hover:underline"
+            className="font-medium text-ink underline decoration-decoration underline-offset-2 hover:decoration-faint"
             rel="noreferrer"
           >
             Visit project
