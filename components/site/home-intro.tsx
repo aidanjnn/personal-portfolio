@@ -68,7 +68,8 @@ export function HomeIntro() {
         </p>
         <p>
           You can find me on <TextLink href={social.X}>X</TextLink>,{" "}
-          <TextLink href={social.LinkedIn}>LinkedIn</TextLink>, or reach me via{" "}
+          <TextLink href={social.LinkedIn}>LinkedIn</TextLink>,{" "}
+          <TextLink href={social.GitHub}>GitHub</TextLink>, or reach me via{" "}
           <TextLink href={social.email}>email</TextLink>.
         </p>
       </div>
