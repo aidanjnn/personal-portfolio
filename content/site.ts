@@ -40,6 +40,7 @@ export const site: Site = {
   social: [
     { href: "https://x.com/aidanjnn", label: "X" },
     { href: "https://linkedin.com/in/aidanjeon", label: "LinkedIn" },
+    { href: "https://github.com/aidanjnn", label: "GitHub" },
     { href: "mailto:aidanjeon00@gmail.com", label: "email" },
   ],
   links: {

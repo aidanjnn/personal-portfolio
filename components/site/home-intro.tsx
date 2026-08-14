@@ -41,9 +41,7 @@ export function HomeIntro() {
             Software Engineering
           </TextLink>{" "}
           student at the{" "}
-          <span className="font-semibold italic underline decoration-faint underline-offset-2">
-            University of Waterloo
-          </span>
+          <span className="font-semibold italic">University of Waterloo</span>
           , focused on agent infrastructure and dabbling into physical AI.
         </p>
         <p>
@@ -68,7 +66,8 @@ export function HomeIntro() {
         </p>
         <p>
           You can find me on <TextLink href={social.X}>X</TextLink>,{" "}
-          <TextLink href={social.LinkedIn}>LinkedIn</TextLink>, or reach me via{" "}
+          <TextLink href={social.LinkedIn}>LinkedIn</TextLink>,{" "}
+          <TextLink href={social.GitHub}>GitHub</TextLink>, or reach me via{" "}
           <TextLink href={social.email}>email</TextLink>.
         </p>
       </div>
