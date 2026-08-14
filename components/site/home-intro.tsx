@@ -50,7 +50,7 @@ export function HomeIntro() {
           <TextLink href={site.links.copperlane} accent>
             Copperlane (YC W26)
           </TextLink>{" "}
-          in SF [with the best people, and true freedom of agency!!].
+          in SF with great people!
         </p>
         <p>
           Previously, I was the youngest ever engineering intern (15) at
