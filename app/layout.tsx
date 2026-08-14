@@ -33,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <div className="mx-auto w-full max-w-[600px] px-8 pt-[8vh] pb-16">
           <SiteHeader />
-          <main id="content" className="page-enter">
+          <main id="content" tabIndex={-1} className="page-enter">
             {children}
           </main>
         </div>
