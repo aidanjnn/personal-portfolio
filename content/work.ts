@@ -33,7 +33,7 @@ const work: readonly WorkEntry[] = [
   {
     year: 2024,
     company: "Strive",
-    role: "Logistics Organizer",
+    role: "Organizer",
     url: "https://strivecompetition.org",
   },
 ];
