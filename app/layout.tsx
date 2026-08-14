@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { SiteFooter } from "@/components/site/site-footer";
+import { Schibsted_Grotesk } from "next/font/google";
 import { SiteHeader } from "@/components/site/site-header";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const grotesk = Schibsted_Grotesk({
+  variable: "--font-grotesk",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -27,14 +22,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${grotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <SiteHeader />
-        <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16">
-          {children}
-        </main>
-        <SiteFooter />
+      <body className="min-h-full bg-canvas text-ink">
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-4 focus:z-50 focus:bg-canvas focus:px-3 focus:py-2"
+        >
+          Skip to content
+        </a>
+        <div className="mx-auto w-full max-w-[600px] px-8 pt-[8vh] pb-16">
+          <SiteHeader />
+          <main id="content" className="page-enter">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
