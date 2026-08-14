@@ -41,9 +41,7 @@ export function HomeIntro() {
             Software Engineering
           </TextLink>{" "}
           student at the{" "}
-          <span className="font-semibold italic underline decoration-faint underline-offset-2">
-            University of Waterloo
-          </span>
+          <span className="font-semibold italic">University of Waterloo</span>
           , focused on agent infrastructure and dabbling into physical AI.
         </p>
         <p>
