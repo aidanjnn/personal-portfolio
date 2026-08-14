@@ -15,7 +15,7 @@ const work: readonly WorkEntry[] = [
   {
     year: 2026,
     company: "UW Blueprint",
-    role: "Software Dev",
+    role: "Software Engineer",
     url: "https://uwblueprint.org",
   },
   {
