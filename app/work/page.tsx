@@ -14,7 +14,7 @@ export default function WorkPage() {
       <h1 className="mb-10 text-[26px] font-bold tracking-[-0.01em] text-ink">
         Work
       </h1>
-      <ul className="grid grid-cols-[2.75rem_minmax(0,1fr)_minmax(0,1fr)] gap-x-5 gap-y-5 text-[15px] leading-snug sm:grid-cols-[3.25rem_minmax(11.5rem,1fr)_minmax(9rem,1.15fr)] sm:gap-x-12">
+      <ul className="grid grid-cols-[2.75rem_minmax(0,1fr)_minmax(0,1fr)] gap-x-5 gap-y-5 text-[15px] leading-snug sm:grid-cols-[3.25rem_max-content_max-content] sm:gap-x-8 sm:whitespace-nowrap">
         {entries.map((entry) => (
           <li
             key={`${entry.year}-${entry.company}`}
