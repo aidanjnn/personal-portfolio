@@ -70,6 +70,14 @@ Run the smallest check that covers the change. Do not run a full build to valida
 ## Conventions
 
 - Base branch is `main`. Conventional Commits for commit subjects and PR titles.
+- Branch names: `<type>/<short-slug>` (e.g. `feat/projects-section`).
 - Do not commit build output (`.next/`), `.env*`, or credentials.
 - Prefer Server Components; add `"use client"` only where interactivity requires it.
 - Keep comments for **why**, not what. No tombstone comments (`// removed X`) or diff narration (`// changed from Y`) — that belongs in the commit message.
+
+## Source layout
+
+- `app/` — routing only: layouts, pages, and Next.js special files.
+- `components/` — shared UI. `components/site/` is chrome (header, footer).
+- `content/` — domain data and its accessors (`site`, `listProjects`, `getProject`). Pages compose; they don't own this data.
+- Domain language lives in `CONTEXT.md`.
