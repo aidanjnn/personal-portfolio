@@ -16,13 +16,18 @@ _Avoid_: WorkEntry, entry, experience, job, item
 A piece of work shown on the site, identified by a slug.
 _Avoid_: case study, post, item, card (a card is UI)
 
+**Thought**:
+A written note shown on `/thoughts`, identified by a slug.
+_Avoid_: blog, post, article, item
+
 ## Relationships
 
-- The **Site** has many **Work** and many **Projects**
+- The **Site** has many **Work**, many **Projects**, and many **Thoughts**
 - **Work** is not a **Project**
 - **Work** is ordered current-first; the first **Work** is the current role
 - A **Project** has a page at `/projects/{slug}`
 - Lists reach a **Project** through the Project module: its `url` when it has one, otherwise its page
+- A **Thought** has a page at `/thoughts/{slug}`
 
 ## Example dialogue
 
@@ -31,3 +36,6 @@ _Avoid_: case study, post, item, card (a card is UI)
 
 > **Dev:** "Does every **Project** link to `/projects/{slug}`?"
 > **Domain expert:** "It always has that page. The list uses the Project module's destination, which is the external url when the **Project** has one."
+
+> **Dev:** "Is a **Thought** a **Project**?"
+> **Domain expert:** "No. A **Thought** is a written note. It always has a page at `/thoughts/{slug}`."
