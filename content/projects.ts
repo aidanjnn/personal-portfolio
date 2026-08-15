@@ -3,9 +3,7 @@ export type Project = {
   title: string;
   summary: string;
   year: number;
-  tags: readonly string[];
   url?: string;
-  role?: string;
 };
 
 const projects: readonly Project[] = [
@@ -15,7 +13,6 @@ const projects: readonly Project[] = [
     summary:
       "Voice agent automating GitHub, Gmail, & G-Cal via natural speech. Won 1st place at NexHacks at CMU (1500+ hackers) (Best use of LiveKit — $1000 + internship).",
     year: 2026,
-    tags: [],
     url: "https://github.com/abrj7/otto",
   },
   {
@@ -23,7 +20,6 @@ const projects: readonly Project[] = [
     title: "Toothfairy",
     summary: "Cursor for dentists, streamlining dental workflows",
     year: 2026,
-    tags: [],
     url: "https://github.com/7kzaincode/toothfairy",
   },
   {
@@ -31,7 +27,6 @@ const projects: readonly Project[] = [
     title: "Sketchy",
     summary: "Draw wireframes & deploy to Vercel in <60 seconds",
     year: 2026,
-    tags: [],
     url: "https://github.com/aidanjnn/sketchy",
   },
 ];
@@ -42,4 +37,8 @@ export function listProjects(): readonly Project[] {
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
+}
+
+export function projectHref(project: Project): string {
+  return project.url ?? `/projects/${project.slug}`;
 }

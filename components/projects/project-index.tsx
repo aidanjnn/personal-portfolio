@@ -1,9 +1,5 @@
 import Link from "next/link";
-import type { Project } from "@/content/projects";
-
-function projectHref(project: Project) {
-  return project.url ?? `/projects/${project.slug}`;
-}
+import { projectHref, type Project } from "@/content/projects";
 
 export function ProjectIndex({
   projects,
