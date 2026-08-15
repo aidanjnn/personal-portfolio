@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { site } from "@/content/site";
+import { currentWork } from "@/content/work";
 
 function TextLink({
   href,
@@ -27,17 +28,13 @@ function TextLink({
 }
 
 export function HomeIntro() {
-  const social = Object.fromEntries(
-    site.social.map((item) => [item.label, item.href]),
-  );
-
   return (
     <div>
       <p className="mb-6 text-[12.5px] text-date">{site.updatedLabel}</p>
       <div className="space-y-[18px] text-[15px] leading-[1.6] text-mute">
         <p>
           I&apos;m a{" "}
-          <TextLink href={site.links.softwareEngineering}>
+          <TextLink href={site.softwareEngineering}>
             Software Engineering
           </TextLink>{" "}
           student at the{" "}
@@ -47,7 +44,7 @@ export function HomeIntro() {
         <p>
           Currently building agents for regulated finance, changing the mortgage
           industry with{" "}
-          <TextLink href={site.links.copperlane} accent>
+          <TextLink href={currentWork().url} accent>
             Copperlane (YC W26)
           </TextLink>{" "}
           in SF with great people!
@@ -65,10 +62,10 @@ export function HomeIntro() {
           like long walks, football, and finding sunset views.
         </p>
         <p>
-          You can find me on <TextLink href={social.X}>X</TextLink>,{" "}
-          <TextLink href={social.LinkedIn}>LinkedIn</TextLink>,{" "}
-          <TextLink href={social.GitHub}>GitHub</TextLink>, or reach me via{" "}
-          <TextLink href={social.email}>email</TextLink>.
+          You can find me on <TextLink href={site.social.x.href}>X</TextLink>,{" "}
+          <TextLink href={site.social.linkedin.href}>LinkedIn</TextLink>,{" "}
+          <TextLink href={site.social.github.href}>GitHub</TextLink>, or reach me via{" "}
+          <TextLink href={site.social.email.href}>email</TextLink>.
         </p>
       </div>
     </div>

@@ -15,11 +15,13 @@ export type Site = {
   tagline: string;
   bio: string;
   updatedLabel: string;
+  softwareEngineering: string;
   nav: readonly NavItem[];
-  social: readonly SocialLink[];
-  links: {
-    softwareEngineering: string;
-    copperlane: string;
+  social: {
+    x: SocialLink;
+    linkedin: SocialLink;
+    github: SocialLink;
+    email: SocialLink;
   };
 };
 
@@ -32,19 +34,16 @@ export const site: Site = {
     "Software Engineering student at the University of Waterloo, focused on agent infrastructure and dabbling into physical AI.",
   bio: "I'm a Software Engineering student at the University of Waterloo, focused on agent infrastructure and dabbling into physical AI. Currently building agents for regulated finance at Copperlane (YC W26).",
   updatedLabel: "Updated Jul 15th, 2026",
+  softwareEngineering: "https://uwaterloo.ca/engineering/",
   nav: [
     { href: "/work", label: "Work" },
     { href: "/projects", label: "Projects" },
     { href: "/thoughts", label: "Thoughts" },
   ],
-  social: [
-    { href: "https://x.com/aidanjnn", label: "X" },
-    { href: "https://linkedin.com/in/aidanjeon", label: "LinkedIn" },
-    { href: "https://github.com/aidanjnn", label: "GitHub" },
-    { href: "mailto:aidanjeon00@gmail.com", label: "email" },
-  ],
-  links: {
-    softwareEngineering: "https://uwaterloo.ca/engineering/",
-    copperlane: "https://www.copperlane.ai/",
+  social: {
+    x: { href: "https://x.com/aidanjnn", label: "X" },
+    linkedin: { href: "https://linkedin.com/in/aidanjeon", label: "LinkedIn" },
+    github: { href: "https://github.com/aidanjnn", label: "GitHub" },
+    email: { href: "mailto:aidanjeon00@gmail.com", label: "email" },
   },
 };
