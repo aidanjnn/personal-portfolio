@@ -32,7 +32,7 @@ export function HomeIntro() {
   const work = currentWork();
 
   return (
-    <div>
+    <div className="flex flex-1 flex-col">
       <p className="mb-6 text-[12.5px] text-date">{site.updatedLabel}</p>
       <div className="space-y-[18px] text-[15px] leading-[1.6] text-mute">
         <p>
@@ -79,6 +79,12 @@ export function HomeIntro() {
           <TextLink href={site.social.email.href}>email</TextLink>.
         </p>
       </div>
+      <p className="flex flex-1 items-center justify-center text-[15px] leading-snug text-faint">
+        <span aria-hidden="true" className="mr-2">
+          ↳
+        </span>
+        A TUI portfolio is coming!
+      </p>
     </div>
   );
 }

@@ -36,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-[600px] flex-col px-8 pt-[8vh] pb-6">
           <SiteHeader />
-          <main id="content" tabIndex={-1} className="page-enter flex-1">
+          <main id="content" tabIndex={-1} className="page-enter flex flex-1 flex-col">
             {children}
           </main>
           <SiteFooter />
