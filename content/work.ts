@@ -1,17 +1,20 @@
-export type WorkEntry = {
+export type Work = {
   year: number;
   company: string;
   role: string;
+  description: string;
   logo: string;
   url: string;
 };
 
-const work: readonly WorkEntry[] = [
+const work: readonly Work[] = [
   {
     year: 2026,
     company: "Copperlane (YC W26)",
     logo: "/images/logos/copperlane.png",
     role: "Software Engineering Intern",
+    description:
+      "Copperlane is the intelligence layer for regulated finance. I'm helping develop the agent + eval harness + do FDE work.",
     url: "https://www.copperlane.ai/",
   },
   {
@@ -19,6 +22,7 @@ const work: readonly WorkEntry[] = [
     company: "UW Blueprint",
     logo: "/images/logos/uw-blueprint.png",
     role: "Software Engineer",
+    description: "Home Again Furniture Bank: Building software for furniture distribution.",
     url: "https://uwblueprint.org",
   },
   {
@@ -26,6 +30,7 @@ const work: readonly WorkEntry[] = [
     company: "WATonomous",
     logo: "/images/logos/watonomous.png",
     role: "Robotics",
+    description: "Autonomous driving. Super interested in world models.",
     url: "https://www.watonomous.ca/",
   },
   {
@@ -33,6 +38,8 @@ const work: readonly WorkEntry[] = [
     company: "Vancouver General Hospital",
     logo: "/images/logos/vancouver-general-hospital.png",
     role: "Biomedical Engineering Intern",
+    description:
+      "Youngest Biomedical Engineering intern @ BC's largest hospital (15), worked on medical device hardware.",
     url: "https://www.providencehealthcare.org/en/health-care-professionals/tools-resources/lower-mainland-biomedical-engineering",
   },
   {
@@ -40,10 +47,20 @@ const work: readonly WorkEntry[] = [
     company: "Strive",
     logo: "/images/logos/strive.png",
     role: "Organizer",
+    description:
+      "Partnered with Western University to deliver Canada's largest tech-business comp hosting [AI start-ups, Microsoft/EA PMs, EY product design, etc.]",
     url: "https://strivecompetition.org",
   },
 ];
 
-export function listWork(): readonly WorkEntry[] {
+export function listWork(): readonly Work[] {
   return work;
+}
+
+export function currentWork(): Work {
+  return work[0];
+}
+
+export function workKey(work: Work): string {
+  return `${work.year}-${work.company}`;
 }

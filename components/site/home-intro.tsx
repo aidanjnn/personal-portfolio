@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { site } from "@/content/site";
+import { currentWork } from "@/content/work";
 
 function TextLink({
   href,
@@ -27,17 +29,15 @@ function TextLink({
 }
 
 export function HomeIntro() {
-  const social = Object.fromEntries(
-    site.social.map((item) => [item.label, item.href]),
-  );
+  const work = currentWork();
 
   return (
-    <div>
+    <div className="flex flex-1 flex-col">
       <p className="mb-6 text-[12.5px] text-date">{site.updatedLabel}</p>
       <div className="space-y-[18px] text-[15px] leading-[1.6] text-mute">
         <p>
           I&apos;m a{" "}
-          <TextLink href={site.links.softwareEngineering}>
+          <TextLink href={site.softwareEngineering}>
             Software Engineering
           </TextLink>{" "}
           student at the{" "}
@@ -47,8 +47,16 @@ export function HomeIntro() {
         <p>
           Currently building agents for regulated finance, changing the mortgage
           industry with{" "}
-          <TextLink href={site.links.copperlane} accent>
-            Copperlane (YC W26)
+          <TextLink href={work.url} accent>
+            <Image
+              src={work.logo}
+              alt=""
+              width={16}
+              height={16}
+              unoptimized
+              className="mr-1.5 inline-block size-[1em] rounded-[3px] object-contain align-[-0.15em]"
+            />
+            {work.company}
           </TextLink>{" "}
           in SF with great people!
         </p>
@@ -65,12 +73,18 @@ export function HomeIntro() {
           like long walks, football, and finding sunset views.
         </p>
         <p>
-          You can find me on <TextLink href={social.X}>X</TextLink>,{" "}
-          <TextLink href={social.LinkedIn}>LinkedIn</TextLink>,{" "}
-          <TextLink href={social.GitHub}>GitHub</TextLink>, or reach me via{" "}
-          <TextLink href={social.email}>email</TextLink>.
+          You can find me on <TextLink href={site.social.x.href}>X</TextLink>,{" "}
+          <TextLink href={site.social.linkedin.href}>LinkedIn</TextLink>,{" "}
+          <TextLink href={site.social.github.href}>GitHub</TextLink>, or reach me via{" "}
+          <TextLink href={site.social.email.href}>email</TextLink>.
         </p>
       </div>
+      <p className="flex flex-1 items-center justify-center text-[15px] leading-snug text-faint">
+        <span aria-hidden="true" className="mr-2">
+          ↳
+        </span>
+        A TUI portfolio is coming!
+      </p>
     </div>
   );
 }

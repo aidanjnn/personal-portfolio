@@ -35,10 +35,7 @@ export default async function ProjectPage({
   return (
     <article className="flex flex-col gap-6">
       <header className="flex flex-col gap-3">
-        <p className="text-[12.5px] text-date">
-          {project.year}
-          {project.role ? ` · ${project.role}` : null}
-        </p>
+        <p className="text-[12.5px] text-date">{project.year}</p>
         <h1 className="text-[26px] font-bold tracking-[-0.01em] text-ink">
           {project.title}
         </h1>
@@ -46,13 +43,6 @@ export default async function ProjectPage({
           {project.summary}
         </p>
       </header>
-      {project.tags.length > 0 ? (
-        <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[12.5px] text-date">
-          {project.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
-      ) : null}
       {project.url ? (
         <p>
           <a

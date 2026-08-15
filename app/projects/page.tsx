@@ -12,7 +12,7 @@ export default function ProjectsPage() {
 
   return (
     <div>
-      <h1 className="mb-7 text-[26px] font-bold tracking-[-0.01em] text-ink">
+      <h1 className="mb-10 text-[26px] font-bold tracking-[-0.01em] text-ink">
         Projects
       </h1>
       <ProjectIndex projects={projects} />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
 import { SiteBackground } from "@/components/site/site-background";
+import { SiteFooter } from "@/components/site/site-footer";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteHeader } from "@/components/site/site-header";
 import { site } from "@/content/site";
@@ -34,11 +35,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <div className="relative z-10 mx-auto w-full max-w-[600px] px-8 pt-[8vh] pb-16">
+        <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-[600px] flex-col px-8 pt-[8vh] pb-6">
           <SiteHeader />
-          <main id="content" tabIndex={-1} className="page-enter">
+          <main id="content" tabIndex={-1} className="page-enter flex flex-1 flex-col">
             {children}
           </main>
+          <SiteFooter />
         </div>
         <Analytics />
       </body>

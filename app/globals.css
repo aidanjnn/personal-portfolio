@@ -3,13 +3,13 @@
 :root {
   color-scheme: light;
   --canvas: #ffffff;
-  --ink: #111111;
-  --mute: #333333;
-  --faint: #999999;
-  --date: #bbbbbb;
-  --rule: #ebebeb;
+  --ink: #32404f;
+  --mute: #32404f;
+  --faint: #7a8794;
+  --date: #a8b2bb;
+  --rule: #e4e7ea;
   --accent: #f97316;
-  --decoration: #cccccc;
+  --decoration: #c5ccd3;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
