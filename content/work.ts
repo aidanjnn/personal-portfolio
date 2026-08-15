@@ -14,7 +14,7 @@ const work: readonly Work[] = [
     logo: "/images/logos/copperlane.png",
     role: "Software Engineering Intern",
     description:
-      "Building agent harnesses + internal tools for regulated finance",
+      "Copperlane is the intelligence layer for regulated finance. I'm helping develop the agent + eval harness + do FDE work.",
     url: "https://www.copperlane.ai/",
   },
   {
@@ -22,7 +22,7 @@ const work: readonly Work[] = [
     company: "UW Blueprint",
     logo: "/images/logos/uw-blueprint.png",
     role: "Software Engineer",
-    description: "Home Again Furniture Bank: Building software for NPOs",
+    description: "Home Again Furniture Bank: Building software for furniture distribution.",
     url: "https://uwblueprint.org",
   },
   {
@@ -30,7 +30,7 @@ const work: readonly Work[] = [
     company: "WATonomous",
     logo: "/images/logos/watonomous.png",
     role: "Robotics",
-    description: "Working on autonomous driving software",
+    description: "Autonomous driving. Super interested in world models.",
     url: "https://www.watonomous.ca/",
   },
   {
@@ -39,7 +39,7 @@ const work: readonly Work[] = [
     logo: "/images/logos/vancouver-general-hospital.png",
     role: "Biomedical Engineering Intern",
     description:
-      "Biomedical engineering intern @ BC's largest hospital, worked on medical device hardware, technical reports",
+      "Youngest Biomedical Engineering intern @ BC's largest hospital (15), worked on medical device hardware.",
     url: "https://www.providencehealthcare.org/en/health-care-professionals/tools-resources/lower-mainland-biomedical-engineering",
   },
   {
@@ -48,7 +48,7 @@ const work: readonly Work[] = [
     logo: "/images/logos/strive.png",
     role: "Organizer",
     description:
-      "Helped lead western Canada's largest tech-business comp hosting [AI start-ups, Microsoft/EA PMs, EY product design, etc.]",
+      "Partnered with Western University to deliver Canada's largest tech-business comp hosting [AI start-ups, Microsoft/EA PMs, EY product design, etc.]",
     url: "https://strivecompetition.org",
   },
 ];
