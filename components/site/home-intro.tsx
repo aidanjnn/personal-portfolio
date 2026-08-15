@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { site } from "@/content/site";
 import { currentWork } from "@/content/work";
 
@@ -28,6 +29,8 @@ function TextLink({
 }
 
 export function HomeIntro() {
+  const work = currentWork();
+
   return (
     <div>
       <p className="mb-6 text-[12.5px] text-date">{site.updatedLabel}</p>
@@ -44,8 +47,16 @@ export function HomeIntro() {
         <p>
           Currently building agents for regulated finance, changing the mortgage
           industry with{" "}
-          <TextLink href={currentWork().url} accent>
-            Copperlane (YC W26)
+          <TextLink href={work.url} accent>
+            <Image
+              src={work.logo}
+              alt=""
+              width={16}
+              height={16}
+              unoptimized
+              className="mr-1.5 inline-block size-[1em] rounded-[3px] object-contain align-[-0.15em]"
+            />
+            {work.company}
           </TextLink>{" "}
           in SF with great people!
         </p>
