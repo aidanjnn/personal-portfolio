@@ -10,13 +10,29 @@ export type Project = {
 
 const projects: readonly Project[] = [
   {
-    slug: "example-project",
-    title: "Example project",
+    slug: "otto",
+    title: "Otto",
     summary:
-      "A placeholder so the project route and content module have a real shape to work against.",
+      "Voice agent automating GitHub, Gmail, & G-Cal via natural speech. Won 1st place at NexHacks at CMU (1500+ hackers) (Best use of LiveKit — $1000 + internship).",
     year: 2026,
-    tags: ["Next.js"],
-    role: "Author",
+    tags: [],
+    url: "https://github.com/abrj7/otto",
+  },
+  {
+    slug: "toothfairy",
+    title: "Toothfairy",
+    summary: "Cursor for dentists, streamlining dental workflows",
+    year: 2026,
+    tags: [],
+    url: "https://github.com/7kzaincode/toothfairy",
+  },
+  {
+    slug: "sketchy",
+    title: "Sketchy",
+    summary: "Draw wireframes & deploy to Vercel in <60 seconds",
+    year: 2026,
+    tags: [],
+    url: "https://github.com/aidanjnn/sketchy",
   },
 ];
 
