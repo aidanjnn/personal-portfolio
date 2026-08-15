@@ -15,20 +15,18 @@ export default function WorkPage() {
       <h1 className="mb-10 text-[26px] font-bold tracking-[-0.01em] text-ink">
         Work
       </h1>
-      <ul className="space-y-6 text-[15px] leading-snug">
+      <ul className="grid grid-cols-[2.75rem_minmax(0,1fr)_minmax(0,1fr)] gap-x-5 gap-y-5 text-[15px] leading-snug sm:grid-cols-[3.25rem_max-content_max-content] sm:gap-x-8 sm:whitespace-nowrap">
         {entries.map((entry) => (
           <li
             key={`${entry.year}-${entry.company}`}
-            className="grid grid-cols-[2.75rem_minmax(0,1fr)] items-baseline gap-x-5 sm:grid-cols-[3.25rem_14.5rem_minmax(0,1fr)] sm:gap-x-4"
+            className="col-span-3 grid grid-cols-subgrid items-baseline"
           >
-            <span className="col-start-1 row-start-1 text-date tabular-nums">
-              {entry.year}
-            </span>
+            <span className="text-date tabular-nums">{entry.year}</span>
             <a
               href={entry.url}
               target="_blank"
               rel="noreferrer"
-              className="col-start-2 row-start-1 text-ink transition-colors duration-200 ease-[var(--ease)] hover:text-faint"
+              className="text-ink transition-colors duration-200 ease-[var(--ease)] hover:text-faint"
             >
               <Image
                 src={entry.logo}
@@ -40,9 +38,7 @@ export default function WorkPage() {
               />
               {entry.company}
             </a>
-            <span className="col-start-2 row-start-2 text-faint sm:col-start-3 sm:row-start-1">
-              {entry.role}
-            </span>
+            <span className="text-faint">{entry.role}</span>
           </li>
         ))}
       </ul>
