@@ -23,6 +23,11 @@ export type Site = {
     github: SocialLink;
     email: SocialLink;
   };
+  webring: {
+    href: string;
+    prev: string;
+    next: string;
+  };
 };
 
 export const site: Site = {
@@ -45,5 +50,10 @@ export const site: Site = {
     linkedin: { href: "https://linkedin.com/in/aidanjeon", label: "LinkedIn" },
     github: { href: "https://github.com/aidanjnn", label: "GitHub" },
     email: { href: "mailto:aidanjeon00@gmail.com", label: "email" },
+  },
+  webring: {
+    href: "https://se-webring.xyz/",
+    prev: "https://dwseoh.com",
+    next: "https://www.simranthind.me/",
   },
 };
