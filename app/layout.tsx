@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
 import { SiteBackground } from "@/components/site/site-background";
 import { SiteFooter } from "@/components/site/site-footer";
+import { Analytics } from "@vercel/analytics/next";
 import { SiteHeader } from "@/components/site/site-header";
 import { site } from "@/content/site";
 import "./globals.css";
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </main>
           <SiteFooter />
         </div>
+        <Analytics />
       </body>
     </html>
   );
