@@ -41,7 +41,7 @@ export const site: Site = {
   updatedLabel: "Updated Jul 15th, 2026",
   softwareEngineering: "https://uwaterloo.ca/engineering/",
   nav: [
-    { href: "/work", label: "Work" },
+    { href: "/work", label: "996" },
     { href: "/projects", label: "Projects" },
     { href: "/thoughts", label: "Thoughts" },
   ],
