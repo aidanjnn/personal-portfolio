@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ThoughtIndex } from "@/components/thoughts/thought-index";
+import { listThoughts } from "@/content/thoughts";
 
 export const metadata: Metadata = {
   title: "Thoughts",
@@ -6,12 +8,14 @@ export const metadata: Metadata = {
 };
 
 export default function ThoughtsPage() {
+  const thoughts = listThoughts();
+
   return (
     <div>
-      <h1 className="mb-7 text-[26px] font-bold tracking-[-0.01em] text-ink">
+      <h1 className="mb-10 text-[26px] font-bold tracking-[-0.01em] text-ink">
         Thoughts
       </h1>
-      <p className="text-[15px] leading-[1.6] text-mute">No thoughts yet.</p>
+      <ThoughtIndex thoughts={thoughts} />
     </div>
   );
 }

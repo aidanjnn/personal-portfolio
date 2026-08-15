@@ -79,5 +79,5 @@ Run the smallest check that covers the change. Do not run a full build to valida
 
 - `app/` — routing only: layouts, pages, and Next.js special files.
 - `components/` — shared UI. `components/site/` is chrome (header, footer).
-- `content/` — domain data and its accessors (`site`, `listWork`, `currentWork`, `listProjects`, `getProject`, `projectHref`). Pages compose; they don't own this data.
+- `content/` — domain data and its accessors (`site`, `listWork`, `currentWork`, `listProjects`, `getProject`, `projectHref`, `listThoughts`, `getThought`). Pages compose; they don't own this data.
 - Domain language lives in `CONTEXT.md`.
