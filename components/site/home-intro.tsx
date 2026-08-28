@@ -45,7 +45,7 @@ export function HomeIntro() {
           , focused on agent infrastructure and dabbling into physical AI.
         </p>
         <p>
-          Currently building agents for regulated finance, changing the mortgage
+          Most recently built agents for regulated finance, changing the mortgage
           industry with{" "}
           <TextLink href={work.url} accent>
             <Image
