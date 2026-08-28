@@ -63,7 +63,7 @@ If either hook blocks a command, remove the offending line and re-run. Never byp
 | Production build | `npm run build` |
 | Lint | `npm run lint` (single file: `npx eslint <path>`) |
 | Type check | `npx tsc --noEmit` |
-| Health score | `npx -y react-doctor@latest . --verbose --diff` |
+| Health score | `npx -y react-doctor@latest . --verbose --scope changed --base main` |
 
 Run the smallest check that covers the change. Do not run a full build to validate a single-component edit.
 
