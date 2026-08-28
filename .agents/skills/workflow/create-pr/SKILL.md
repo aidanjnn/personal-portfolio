@@ -20,7 +20,7 @@ This explicit request enters the PR phase. Do not use this skill during normal i
 
 2. **Verify before opening**
    - Run `npm run lint` and `npm run build`. Do not open a PR on a branch that fails either.
-   - If `react-doctor` is in use, confirm the score has not regressed (see the `react-doctor` skill).
+   - If `react-doctor` is in use, run it per the `react-doctor` skill. A missing numeric score is not a PR blocker when diagnostics are clean.
 
 3. **Review the full PR scope**
    - Review **all commits since the branch diverged** from the base branch, not just the latest commit:
