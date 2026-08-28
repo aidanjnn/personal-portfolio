@@ -37,7 +37,7 @@ export const site: Site = {
     "Software Engineering student at the University of Waterloo, building agents for regulated finance at Copperlane.",
   tagline:
     "Software Engineering student at the University of Waterloo, focused on agent infrastructure and dabbling into physical AI.",
-  bio: "I'm a Software Engineering student at the University of Waterloo, focused on agent infrastructure and dabbling into physical AI. Currently building agents for regulated finance at Copperlane (YC W26).",
+  bio: "I'm a Software Engineering student at the University of Waterloo, focused on agent infrastructure and dabbling into physical AI. Most recently built agents for regulated finance at Copperlane (YC W26).",
   updatedLabel: "Updated Jul 15th, 2026",
   softwareEngineering: "https://uwaterloo.ca/engineering/",
   nav: [
