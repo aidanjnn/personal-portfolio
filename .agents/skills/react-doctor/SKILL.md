@@ -6,17 +6,27 @@ version: "1.2.0"
 
 # React Doctor
 
-Scans React codebases for security, performance, correctness, and architecture issues. Outputs a 0–100 health score.
+Scans React codebases for security, performance, correctness, and architecture issues.
+
+Lint findings are local. The 0–100 health score is not — after the scan, the CLI POSTs diagnostics to `https://www.react.doctor/api/score`. If that request fails, times out, or is blocked, the scan still prints findings and says `Score unavailable (could not reach the score API)`.
 
 ## After making React code changes:
 
-Run `npx react-doctor@latest --verbose --scope changed` and check the score did not regress.
+```bash
+npx react-doctor@latest --verbose --scope changed --base main
+```
 
-If the score dropped, fix the regressions before committing.
+Request unrestricted network for that command. The score API is not on the default sandbox allowlist, and the first request is often the one that fails.
+
+Gate on **diagnostics**, not the number:
+
+- If the score is present and dropped, fix the regressions before committing.
+- If the score is unavailable and the scan found no issues, continue. Do not rerun just to get a number.
+- Use `--no-score` when you only need diagnostics (offline, or the API is flaky).
 
 ## For general cleanup or code improvement:
 
-Run `npx react-doctor@latest --verbose` (the default `--scope full`) to scan the full codebase. Fix issues by severity — errors first, then warnings.
+Run `npx react-doctor@latest --verbose` (the default `--scope full`) to scan the full codebase. Fix issues by severity — errors first, then warnings. Same score-API rules as above.
 
 ## For a focused UI design audit:
 
@@ -43,14 +53,15 @@ When the user wants to understand a rule, disagrees with one, or wants to disabl
 ## Command
 
 ```bash
-npx react-doctor@latest --verbose --scope changed
+npx react-doctor@latest --verbose --scope changed --base main
 ```
 
-| Flag              | Purpose                                                          |
-| ----------------- | ---------------------------------------------------------------- |
-| `.`               | Scan current directory                                           |
-| `--verbose`       | Show affected files and line numbers per rule                    |
-| `--scope changed` | Only report issues introduced vs the base branch (default: full) |
-| `--scope lines`   | Only report issues on the changed lines                          |
-| `--score`         | Output only the numeric score                                    |
-| `design`          | Run only the focused UI design diagnostics                       |
+| Flag | Purpose |
+| --- | --- |
+| `.` | Scan current directory |
+| `--verbose` | Show affected files and line numbers per rule |
+| `--scope changed --base main` | Only report issues introduced vs `main` |
+| `--scope lines` | Only report issues on the changed lines |
+| `--score` | Output only the numeric score (still needs the API) |
+| `--no-score` | Skip the score API |
+| `design` | Run only the focused UI design diagnostics |

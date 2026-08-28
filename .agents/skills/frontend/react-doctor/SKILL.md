@@ -1,50 +1,39 @@
 ---
 name: react-doctor
 description: Use when finishing a feature, fixing a bug, before committing React code, or when the user wants to improve code quality or clean up a codebase. Checks for score regression. Covers lint, dead code, accessibility, bundle size, architecture diagnostics.
-version: "1.1.0"
+version: "1.0.0"
 ---
 
 # React Doctor
 
-Scans React codebases for security, performance, correctness, and architecture issues.
-
-Lint findings are local. The 0–100 health score is not — after the scan, the CLI POSTs diagnostics to `https://www.react.doctor/api/score`. If that request fails, times out, or is blocked, the scan still prints findings and says `Score unavailable (could not reach the score API)`.
+Scans React codebases for security, performance, correctness, and architecture issues. Outputs a 0–100 health score.
 
 Adapted from [tomzhengy/tomzhe.ng](https://github.com/tomzhengy/tomzhe.ng/blob/main/skills/react-doctor/SKILL.md).
 
 ## After making React code changes:
 
-```bash
-npx -y react-doctor@latest . --verbose --scope changed --base main
-```
+Run `npx -y react-doctor@latest . --verbose --diff` and check the score did not regress.
 
-Request unrestricted network for that command. The score API is not on the default sandbox allowlist, and the first request is often the one that fails.
-
-Gate on **diagnostics**, not the number:
-
-- If the score is present and dropped, fix the regressions before committing.
-- If the score is unavailable and the scan found no issues, continue. Do not rerun just to get a number.
-- Use `--no-score` when you only need diagnostics (offline, or the API is flaky).
+If the score dropped, fix the regressions before committing.
 
 ## For general cleanup or code improvement:
 
-Run `npx -y react-doctor@latest . --verbose` (no `--scope`) to scan the full codebase. Fix issues by severity — errors first, then warnings. Same score-API rules as above.
+Run `npx -y react-doctor@latest . --verbose` (without `--diff`) to scan the full codebase. Fix issues by severity — errors first, then warnings.
 
 ## Command
 
 ```bash
-npx -y react-doctor@latest . --verbose --scope changed --base main
+npx -y react-doctor@latest . --verbose --diff
 ```
 
-| Flag | Purpose |
-| --- | --- |
-| `.` | Scan current directory |
+| Flag        | Purpose                                       |
+| ----------- | --------------------------------------------- |
+| `.`         | Scan current directory                        |
 | `--verbose` | Show affected files and line numbers per rule |
-| `--scope changed --base main` | Only scan files changed vs `main` |
-| `--score` | Output only the numeric score (still needs the API) |
-| `--no-score` | Skip the score API |
+| `--diff`    | Only scan changed files vs base branch        |
+| `--score`   | Output only the numeric score                 |
 
-`--diff` is deprecated. Do not use it.
+`--diff` compares against the base branch — `main` in this repo.
 
 ## Suppressing rules
 

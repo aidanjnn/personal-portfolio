@@ -30,7 +30,7 @@ Never edit a skill through a `.claude/skills/` path — edit the real file under
 | `commit`, `commit and push`, `ship it` | [commit](.agents/skills/workflow/commit/SKILL.md) |
 | `create PR`, `open PR`, `draft PR` | [create-pr](.agents/skills/workflow/create-pr/SKILL.md) |
 | `clean up`, `simplify`, `polish`, `make the diff smaller` | [cleanup](.agents/skills/workflow/cleanup/SKILL.md) |
-| Finishing a feature or fixing a bug in React code | [react-doctor](.agents/skills/frontend/react-doctor/SKILL.md) |
+| Finishing a feature or fixing a bug in React code | [react-doctor](.agents/skills/react-doctor/SKILL.md) |
 | `improve architecture`, find refactoring opportunities | [improve-code-architecture](.agents/skills/workflow/improve-code-architecture/SKILL.md) |
 | `grill me`, stress-test a plan against the domain model | [grill-me](.agents/skills/workflow/grill-me/SKILL.md) |
 
@@ -63,7 +63,7 @@ If either hook blocks a command, remove the offending line and re-run. Never byp
 | Production build | `npm run build` |
 | Lint | `npm run lint` (single file: `npx eslint <path>`) |
 | Type check | `npx tsc --noEmit` |
-| Health score | `npx -y react-doctor@latest . --verbose --scope changed --base main` |
+| Health score | `npx react-doctor@latest --verbose --scope changed --base main` |
 
 Run the smallest check that covers the change. Do not run a full build to validate a single-component edit.
 
