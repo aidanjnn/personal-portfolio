@@ -32,5 +32,6 @@ else
   cat "$react_doctor_output" >&2
   rm -f "$react_doctor_output"
   printf '%s\n' "React Doctor found staged regressions." "Run react-doctor --staged --blocking warning to inspect." "Want them fixed? Ask your agent to run that command and resolve the findings." >&2
+  exit 1
 fi
 # react-doctor hook end
