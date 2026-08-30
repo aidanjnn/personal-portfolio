@@ -80,7 +80,7 @@ async function fetchMainCommitDate(): Promise<Date | null> {
 }
 
 function gitMainCommitDate(): Date | null {
-  for (const ref of [`origin/${BRANCH}`, BRANCH, "HEAD"] as const) {
+  for (const ref of [`origin/${BRANCH}`, BRANCH] as const) {
     try {
       const iso = execFileSync("git", ["log", "-1", "--format=%cI", ref], {
         encoding: "utf8",
