@@ -14,7 +14,6 @@ export type Site = {
   description: string;
   tagline: string;
   bio: string;
-  updatedLabel: string;
   softwareEngineering: string;
   nav: readonly NavItem[];
   social: {
@@ -38,7 +37,6 @@ export const site: Site = {
   tagline:
     "Software Engineering student at the University of Waterloo, focused on agent infrastructure and dabbling into physical AI.",
   bio: "I'm a Software Engineering student at the University of Waterloo, focused on agent infrastructure and dabbling into physical AI. Most recently built agents for regulated finance at Copperlane (YC W26).",
-  updatedLabel: "Updated Jul 15th, 2026",
   softwareEngineering: "https://uwaterloo.ca/engineering/",
   nav: [
     { href: "/work", label: "996" },

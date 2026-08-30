@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import { site } from "@/content/site";
+import { getUpdatedLabel } from "@/content/updated";
 import { currentWork } from "@/content/work";
 
 function TextLink({
@@ -28,12 +29,15 @@ function TextLink({
   );
 }
 
-export function HomeIntro() {
+export async function HomeIntro() {
   const work = currentWork();
+  const updatedLabel = await getUpdatedLabel();
 
   return (
     <div className="flex flex-1 flex-col">
-      <p className="mb-6 text-[12.5px] text-date">{site.updatedLabel}</p>
+      {updatedLabel ? (
+        <p className="mb-6 text-[12.5px] text-date">{updatedLabel}</p>
+      ) : null}
       <div className="space-y-[18px] text-[15px] leading-[1.6] text-mute">
         <p>
           I&apos;m a{" "}
