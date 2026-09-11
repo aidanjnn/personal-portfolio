@@ -36,9 +36,9 @@ export async function HomeIntro() {
   return (
     <div className="flex flex-1 flex-col">
       {updatedLabel ? (
-        <p className="mb-6 text-[12.5px] text-date">{updatedLabel}</p>
+        <p className="mb-8 text-[12.5px] text-date">{updatedLabel}</p>
       ) : null}
-      <div className="space-y-[18px] text-[15px] leading-[1.6] text-mute">
+      <div className="space-y-8 text-[15px] leading-[1.75] text-mute">
         <p>
           I&apos;m a{" "}
           <TextLink href={site.softwareEngineering}>
