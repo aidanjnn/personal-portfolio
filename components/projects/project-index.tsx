@@ -40,6 +40,11 @@ export function ProjectIndex({
                   {project.title}
                 </a>
               )}
+              {project.event ? (
+                <span className="font-normal text-faint">
+                  {" "}({project.event})
+                </span>
+              ) : null}
               <p className="mt-1 text-[15px] leading-[1.6] text-faint">
                 {project.summary}
               </p>

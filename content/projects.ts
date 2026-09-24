@@ -1,12 +1,22 @@
 export type Project = {
   slug: string;
   title: string;
+  event?: string;
   summary: string;
   year: number;
   url?: string;
 };
 
 const projects: readonly Project[] = [
+  {
+    slug: "teachar",
+    title: "teachAR",
+    event: "Hack the North",
+    summary:
+      "AR tutor for learning physical skills through recorded ghost hands & an AI coach",
+    year: 2026,
+    url: "https://github.com/aidanjnn/teachAR",
+  },
   {
     slug: "otto",
     title: "Otto",
