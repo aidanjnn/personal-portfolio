@@ -38,6 +38,11 @@ export default async function ProjectPage({
         <p className="text-[12.5px] text-date">{project.year}</p>
         <h1 className="text-[26px] font-bold tracking-[-0.01em] text-ink">
           {project.title}
+          {project.event ? (
+            <span className="font-normal text-faint">
+              {" "}({project.event})
+            </span>
+          ) : null}
         </h1>
         <p className="text-[15px] leading-[1.6] text-pretty text-mute">
           {project.summary}
