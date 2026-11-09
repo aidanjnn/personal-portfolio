@@ -77,7 +77,7 @@ export async function HomeIntro() {
           like long walks, football, and finding sunset views.
         </p>
         <p>
-          Open to Winter 2027 and Summer 2027 internships. You can find me on <TextLink href={site.social.x.href}>X</TextLink>,{" "}
+          Open to internships + full-time roles. You can find me on <TextLink href={site.social.x.href}>X</TextLink>,{" "}
           <TextLink href={site.social.linkedin.href}>LinkedIn</TextLink>,{" "}
           <TextLink href={site.social.github.href}>GitHub</TextLink>, or reach me via{" "}
           <TextLink href={site.social.email.href}>email</TextLink>.
