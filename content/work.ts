@@ -14,7 +14,7 @@ const work: readonly Work[] = [
     logo: "/images/logos/copperlane.png",
     role: "Software Engineering Intern",
     description:
-      "Copperlane is the intelligence layer for regulated finance. I'm helping develop the agent + eval harness + do FDE work.",
+      "Copperlane is the intelligence layer for regulated finance. Helped develop the agent + eval harness + did FDE work in SF (summer 2026).",
     url: "https://www.copperlane.ai/",
   },
   {
