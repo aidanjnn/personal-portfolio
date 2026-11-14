@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.aidanjeon.com/portfolio.schema.json",
+  "$comment": "Portfolio content contract v2. Produced by the Next.js site at /portfolio.json and consumed by the SSH portfolio. The Rust loader additionally limits snapshots to 1 MiB and rejects terminal control and invisible formatting characters.",
+  "title": "Aidan Jeon public portfolio",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "updated", "name", "web", "intro", "work", "projects", "thoughts", "webring"],
+  "properties": {
+    "version": { "const": 2 },
+    "updated": { "oneOf": [{ "$ref": "#/$defs/shortText" }, { "type": "null" }] },
+    "name": { "$ref": "#/$defs/shortText" },
+    "web": { "$ref": "#/$defs/url" },
+    "intro": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 64,
+        "items": { "$ref": "#/$defs/span" }
+      }
+    },
+    "work": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["year", "company", "role", "description", "url"],
+        "properties": {
+          "year": { "$ref": "#/$defs/year" },
+          "company": { "$ref": "#/$defs/shortText" },
+          "role": { "$ref": "#/$defs/shortText" },
+          "description": { "$ref": "#/$defs/bodyText" },
+          "url": { "$ref": "#/$defs/url" }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slug", "title", "event", "summary", "year", "url"],
+        "properties": {
+          "slug": { "$ref": "#/$defs/slug" },
+          "title": { "$ref": "#/$defs/shortText" },
+          "event": { "oneOf": [{ "$ref": "#/$defs/shortText" }, { "type": "null" }] },
+          "summary": { "$ref": "#/$defs/bodyText" },
+          "year": { "$ref": "#/$defs/year" },
+          "url": { "$ref": "#/$defs/url" }
+        }
+      }
+    },
+    "thoughts": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slug", "title", "subtitle", "year", "url", "sections"],
+        "properties": {
+          "slug": { "$ref": "#/$defs/slug" },
+          "title": { "$ref": "#/$defs/shortText" },
+          "subtitle": { "$ref": "#/$defs/bodyText" },
+          "year": { "$ref": "#/$defs/year" },
+          "url": { "$ref": "#/$defs/url" },
+          "sections": {
+            "type": "array",
+            "maxItems": 32,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["heading", "items"],
+              "properties": {
+                "heading": { "$ref": "#/$defs/shortText" },
+                "items": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 64,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["text", "url"],
+                    "properties": {
+                      "text": { "$ref": "#/$defs/bodyText" },
+                      "url": { "oneOf": [{ "$ref": "#/$defs/url" }, { "type": "null" }] }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "webring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["previous", "home", "next"],
+      "properties": {
+        "previous": { "$ref": "#/$defs/url" },
+        "home": { "$ref": "#/$defs/url" },
+        "next": { "$ref": "#/$defs/url" }
+      }
+    }
+  },
+  "$defs": {
+    "shortText": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "\\S" },
+    "bodyText": { "type": "string", "minLength": 1, "maxLength": 2048, "pattern": "\\S" },
+    "year": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64 },
+    "url": {
+      "type": "string",
+      "maxLength": 2048,
+      "pattern": "^(https://[A-Za-z0-9.-]+(?:/[^\\s]*)?|mailto:[^\\s?]+@[^\\s?]+)$"
+    },
+    "span": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "style", "url"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1, "maxLength": 2048 },
+        "style": { "enum": ["plain", "strong", "emphasis", "accent", "highlight"] },
+        "url": { "oneOf": [{ "$ref": "#/$defs/url" }, { "type": "null" }] }
+      }
+    }
+  }
+}

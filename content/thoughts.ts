@@ -102,3 +102,7 @@ export function listThoughts(): readonly Thought[] {
 export function getThought(slug: string): Thought | undefined {
   return thoughts.find((thought) => thought.slug === slug);
 }
+
+export function thoughtHref(thought: Thought): string {
+  return `/thoughts/${thought.slug}`;
+}

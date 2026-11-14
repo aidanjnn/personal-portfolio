@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Thought } from "@/content/thoughts";
+import { thoughtHref, type Thought } from "@/content/thoughts";
 
 export function ThoughtIndex({
   thoughts,
@@ -22,7 +22,7 @@ export function ThoughtIndex({
           </span>
           <div>
             <Link
-              href={`/thoughts/${thought.slug}`}
+              href={thoughtHref(thought)}
               className="font-semibold text-ink transition-colors duration-200 ease-[var(--ease)] hover:text-faint"
             >
               {thought.title}

@@ -20,6 +20,10 @@ _Avoid_: case study, post, item, card (a card is UI)
 A written note shown on `/thoughts`, identified by a slug.
 _Avoid_: blog, post, article, item
 
+**Portfolio snapshot**:
+The Site's public content as one JSON document at `/portfolio.json`, read by the terminal portfolio. Its shape is the v2 contract in `public/portfolio.schema.json`.
+_Avoid_: feed, API, dump
+
 ## Relationships
 
 - The **Site** has many **Work**, many **Projects**, and many **Thoughts**
@@ -28,6 +32,7 @@ _Avoid_: blog, post, article, item
 - A **Project** has a page at `/projects/{slug}`
 - Lists reach a **Project** through the Project module: its `url` when it has one, otherwise its page
 - A **Thought** has a page at `/thoughts/{slug}`
+- The **Portfolio snapshot** is built from the same content the pages render; it is never edited by hand, and every link in it is a full URL
 
 ## Example dialogue
 

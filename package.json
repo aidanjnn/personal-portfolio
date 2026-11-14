@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "export:portfolio": "node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/export-portfolio.mjs",
+    "check:portfolio": "npm run --silent export:portfolio | node scripts/check-portfolio.mjs",
     "doctor": "react-doctor"
   },
   "dependencies": {

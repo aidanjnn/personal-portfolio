@@ -63,6 +63,8 @@ If either hook blocks a command, remove the offending line and re-run. Never byp
 | Production build | `npm run build` |
 | Lint | `npm run lint` (single file: `npx eslint <path>`) |
 | Type check | `npx tsc --noEmit` |
+| Print the Portfolio snapshot | `npm run export:portfolio` |
+| Validate the Portfolio snapshot | `npm run check:portfolio` |
 | Health score | `npx react-doctor@latest --verbose --scope changed --base main` |
 
 Run the smallest check that covers the change. Do not run a full build to validate a single-component edit.
@@ -79,5 +81,6 @@ Run the smallest check that covers the change. Do not run a full build to valida
 
 - `app/` — routing only: layouts, pages, and Next.js special files.
 - `components/` — shared UI. `components/site/` is chrome (header, footer).
-- `content/` — domain data and its accessors (`site`, `listWork`, `currentWork`, `listProjects`, `getProject`, `projectHref`, `listThoughts`, `getThought`). Pages compose; they don't own this data.
+- `content/` — domain data and its accessors (`site`, `intro`, `listWork`, `currentWork`, `listProjects`, `getProject`, `projectHref`, `listThoughts`, `getThought`, `thoughtHref`, `buildPortfolio`). Pages compose; they don't own this data.
+- `scripts/` — Node scripts run outside Next.js (`export:portfolio`, `check:portfolio`).
 - Domain language lives in `CONTEXT.md`.
