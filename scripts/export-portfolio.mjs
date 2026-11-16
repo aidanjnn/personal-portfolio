@@ -26,4 +26,4 @@ const { buildPortfolio, serializePortfolio } = await import(
   "../content/portfolio.ts"
 );
 
-process.stdout.write(serializePortfolio(await buildPortfolio()));
+process.stdout.write(serializePortfolio(buildPortfolio()));

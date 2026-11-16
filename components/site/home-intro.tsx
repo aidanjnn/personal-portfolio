@@ -70,8 +70,8 @@ function IntroText({ span }: { span: IntroSpan }) {
   );
 }
 
-export async function HomeIntro() {
-  const updatedLabel = await getUpdatedLabel();
+export function HomeIntro() {
+  const updatedLabel = getUpdatedLabel();
 
   return (
     <div className="flex flex-1 flex-col">

@@ -1,9 +1,5 @@
 import { execFileSync } from "node:child_process";
 
-const REPO =
-  process.env.GITHUB_REPOSITORY ?? "aidanjnn/personal-portfolio";
-const BRANCH = "main";
-
 function ordinal(day: number): string {
   const mod100 = day % 100;
   if (mod100 >= 11 && mod100 <= 13) return "th";
@@ -43,59 +39,24 @@ export function formatUpdatedLabel(date: Date): string {
   return `Updated ${month} ${day}${ordinal(day)}, ${year}`;
 }
 
-async function fetchMainCommitDate(): Promise<Date | null> {
-  const headers: HeadersInit = {
-    Accept: "application/vnd.github+json",
-    "User-Agent": "personal-portfolio",
-    "X-GitHub-Api-Version": "2022-11-28",
-  };
-
-  const token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
-  }
-
+/** The deploy commit's committer date; empty when git or the repository is unavailable. */
+function headCommitIso(): string {
   try {
-    const res = await fetch(
-      `https://api.github.com/repos/${REPO}/commits?sha=${BRANCH}&per_page=1`,
-      {
-        headers,
-        // Resolve once per build / deploy; the label tracks main merges.
-        cache: "force-cache",
-      },
-    );
-
-    if (!res.ok) return null;
-
-    const commits = (await res.json()) as Array<{
-      commit?: { committer?: { date?: string }; author?: { date?: string } };
-    }>;
-
-    const iso =
-      commits[0]?.commit?.committer?.date ?? commits[0]?.commit?.author?.date;
-    return iso ? new Date(iso) : null;
+    return execFileSync("git", ["log", "-1", "--format=%cI", "HEAD"], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
   } catch {
-    return null;
+    return "";
   }
 }
 
-function gitMainCommitDate(): Date | null {
-  for (const ref of [`origin/${BRANCH}`, BRANCH] as const) {
-    try {
-      const iso = execFileSync("git", ["log", "-1", "--format=%cI", ref], {
-        encoding: "utf8",
-        stdio: ["ignore", "pipe", "ignore"],
-      }).trim();
-      if (iso) return new Date(iso);
-    } catch {
-      // try the next ref
-    }
-  }
-  return null;
-}
-
-/** Latest site update from commits on `main` (GitHub API, else local git). */
-export async function getUpdatedLabel(): Promise<string | null> {
-  const date = (await fetchMainCommitDate()) ?? gitMainCommitDate();
-  return date ? formatUpdatedLabel(date) : null;
+/**
+ * The site's last update, from the commit being built. Reading the checkout
+ * rather than the GitHub API keeps the label tied to the deploy, with no cache
+ * to carry an old date across builds. Pass an ISO date to format a known commit.
+ */
+export function getUpdatedLabel(commitIso: string = headCommitIso()): string | null {
+  const date = new Date(commitIso);
+  return commitIso && !Number.isNaN(date.getTime()) ? formatUpdatedLabel(date) : null;
 }

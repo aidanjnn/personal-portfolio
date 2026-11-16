@@ -49,10 +49,10 @@ function optionalUrl(href: string | undefined): string | null {
   return href === undefined ? null : absoluteUrl(href);
 }
 
-export async function buildPortfolio(): Promise<Portfolio> {
+export function buildPortfolio(): Portfolio {
   return {
     version: 2,
-    updated: await getUpdatedLabel(),
+    updated: getUpdatedLabel(),
     name: site.name,
     web: site.url,
     intro: intro.map((paragraph) =>
