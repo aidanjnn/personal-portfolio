@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/content/site";
+import { absoluteUrl, site } from "@/content/site";
 
 // Named explicitly so AI crawlers that only honor their own user-agent still see an allow.
 const aiCrawlers = [
@@ -23,7 +23,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", allow: "/" },
       { userAgent: aiCrawlers, allow: "/" },
     ],
-    sitemap: `${site.url}/sitemap.xml`,
+    sitemap: absoluteUrl("/sitemap.xml"),
     host: site.url,
   };
 }

@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { absoluteUrl, site } from "@/content/site";
 import { listWork } from "@/content/work";
 
 const university = {
@@ -13,7 +13,7 @@ function email(): string {
 
 /** schema.org Person + WebSite graph so search engines and agents can read who Aidan is. */
 function structuredData() {
-  const personId = `${site.url}/#person`;
+  const personId = absoluteUrl("/#person");
   const pastEmployers = listWork().flatMap((work) =>
     work.company.startsWith("Copperlane")
       ? [{ "@type": "Organization", name: work.company, url: work.url }]
@@ -57,7 +57,7 @@ function structuredData() {
       },
       {
         "@type": "WebSite",
-        "@id": `${site.url}/#website`,
+        "@id": absoluteUrl("/#website"),
         name: site.title,
         url: site.url,
         description: site.description,
