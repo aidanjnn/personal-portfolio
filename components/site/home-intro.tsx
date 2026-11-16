@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
-import { intro, type IntroSpan, type IntroStyle } from "@/content/home";
+import { intro, type IntroSpan, type IntroStyle } from "@/content/intro";
 import { getUpdatedLabel } from "@/content/updated";
 import { currentWork } from "@/content/work";
 

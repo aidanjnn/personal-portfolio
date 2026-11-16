@@ -1,4 +1,4 @@
-import { intro, type IntroStyle } from "./home";
+import { intro, type IntroStyle } from "./intro";
 import { listProjects, projectHref } from "./projects";
 import { site } from "./site";
 import { listThoughts, thoughtHref } from "./thoughts";

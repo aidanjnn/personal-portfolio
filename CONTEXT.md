@@ -20,6 +20,10 @@ _Avoid_: case study, post, item, card (a card is UI)
 A written note shown on `/thoughts`, identified by a slug.
 _Avoid_: blog, post, article, item
 
+**Intro**:
+The opening paragraphs on the home page, written as styled spans so the same copy can be published in the **Portfolio snapshot**. A span may link somewhere.
+_Avoid_: home copy, hero, bio (the **Site** bio is separate, shorter copy)
+
 **Portfolio snapshot**:
 The Site's public content as one JSON document at `/portfolio.json`, read by the terminal portfolio. Its shape is the v2 contract in `public/portfolio.schema.json`.
 _Avoid_: feed, API, dump
