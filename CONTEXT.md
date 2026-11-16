@@ -25,7 +25,7 @@ The opening paragraphs on the home page, written as styled spans so the same cop
 _Avoid_: home copy, hero, bio (the **Site** bio is separate, shorter copy)
 
 **Portfolio snapshot**:
-The Site's public content as one JSON document at `/portfolio.json`, read by the terminal portfolio. Its shape is the v2 contract in `public/portfolio.schema.json`.
+The Site's public content as one JSON document at `/portfolio.json`, read by the terminal portfolio. Its shape is contract v2, defined by the terminal portfolio: its Rust loader (`Portfolio::from_json`) is the authority, and the JSON Schema at https://raw.githubusercontent.com/aidanjnn/personal-portfolio-ssh/main/content/portfolio.schema.json documents it.
 _Avoid_: feed, API, dump
 
 ## Relationships

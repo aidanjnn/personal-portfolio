@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-/* Prose and data, not markup: keep their words out of the generated utilities. */
-@source not "../public/portfolio.schema.json";
+/* Node scripts, not markup: keep their words out of the generated utilities. */
 @source not "../scripts";
 
 :root {

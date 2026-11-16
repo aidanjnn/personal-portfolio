@@ -6,9 +6,11 @@ import { getUpdatedLabel } from "./updated";
 import { listWork } from "./work";
 
 /**
- * The public content of the Site as one JSON document (contract v2, see
- * `public/portfolio.schema.json`). The terminal portfolio reads it from
- * `/portfolio.json`, so every link is a full URL and absent values are `null`.
+ * The public content of the Site as one JSON document (contract v2). The
+ * terminal portfolio reads it from `/portfolio.json`, so every link is a full
+ * URL and absent values are `null`. The terminal's Rust loader is the authority
+ * on this shape; `npm run check:portfolio` runs it, and its JSON Schema is
+ * https://raw.githubusercontent.com/aidanjnn/personal-portfolio-ssh/main/content/portfolio.schema.json
  */
 export type Portfolio = {
   version: 2;

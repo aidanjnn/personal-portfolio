@@ -64,7 +64,7 @@ If either hook blocks a command, remove the offending line and re-run. Never byp
 | Lint | `npm run lint` (single file: `npx eslint <path>`) |
 | Type check | `npx tsc --noEmit` |
 | Print the Portfolio snapshot | `npm run export:portfolio` |
-| Validate the Portfolio snapshot | `npm run check:portfolio` |
+| Validate the Portfolio snapshot | `npm run check:portfolio` (needs Docker) |
 | Health score | `npx react-doctor@latest --verbose --scope changed --base main` |
 
 Run the smallest check that covers the change. Do not run a full build to validate a single-component edit.
@@ -82,5 +82,11 @@ Run the smallest check that covers the change. Do not run a full build to valida
 - `app/` — routing only: layouts, pages, and Next.js special files.
 - `components/` — shared UI. `components/site/` is chrome (header, footer).
 - `content/` — domain data and its accessors (`site`, `absoluteUrl`, `intro`, `listWork`, `currentWork`, `listProjects`, `getProject`, `projectHref`, `projectPageHref`, `listThoughts`, `getThought`, `thoughtHref`, `buildPortfolio`). Pages compose; they don't own this data.
-- `scripts/` — Node scripts run outside Next.js (`export:portfolio`, `check:portfolio`).
+- `scripts/` — Node scripts run outside Next.js (`export:portfolio`).
 - Domain language lives in `CONTEXT.md`.
+
+## Portfolio snapshot contract
+
+The terminal portfolio ([aidanjnn/personal-portfolio-ssh](https://github.com/aidanjnn/personal-portfolio-ssh)) owns the `/portfolio.json` contract. Its Rust loader, `Portfolio::from_json`, is the only authority: it rejects unknown fields and enforces URL, text, and size limits. The JSON Schema at https://raw.githubusercontent.com/aidanjnn/personal-portfolio-ssh/main/content/portfolio.schema.json documents the same shape, but the Rust validator wins where they differ. Do not add a validator or schema copy here.
+
+`npm run check:portfolio` pipes `export:portfolio` into that validator via the published image (`ghcr.io/aidanjnn/personal-portfolio-ssh:latest`, the latest release, which is what production runs). Without Docker, run the same check from a checkout of the terminal repo: `npm run --silent export:portfolio | cargo run --quiet --locked --manifest-path <terminal-repo>/Cargo.toml -- --check-content -`.
