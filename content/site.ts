@@ -93,3 +93,8 @@ export const site: Site = {
     next: "https://www.simranthind.me/",
   },
 };
+
+/** A full URL for an href: site paths ("/work") gain the Site origin; other hrefs pass through. */
+export function absoluteUrl(href: string): string {
+  return href.startsWith("/") ? `${site.url}${href}` : href;
+}

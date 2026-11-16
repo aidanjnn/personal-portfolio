@@ -1,22 +1,18 @@
-import { listProjects } from "@/content/projects";
-import { site } from "@/content/site";
+import { listProjects, projectHref } from "@/content/projects";
+import { absoluteUrl, site } from "@/content/site";
 import { listWork } from "@/content/work";
 
 export const dynamic = "force-static";
-
-function absolute(href: string): string {
-  return href.startsWith("/") ? `${site.url}${href}` : href;
-}
 
 function llmsTxt(): string {
   const email = site.social.email.href.replace(/^mailto:/, "");
   const work = listWork().map(
     (entry) =>
-      `- **${entry.company}**, ${entry.role} (${entry.year}): ${entry.description} ${entry.url}`,
+      `- **${entry.company}**, ${entry.role} (${entry.year}): ${entry.description} ${absoluteUrl(entry.url)}`,
   );
   const projects = listProjects().map((project) => {
     const event = project.event ? ` (${project.event})` : "";
-    const href = absolute(project.url ?? `/projects/${project.slug}`);
+    const href = absoluteUrl(projectHref(project));
     return `- **${project.title}**${event}, ${project.year}: ${project.summary} ${href}`;
   });
 
@@ -55,11 +51,11 @@ function llmsTxt(): string {
     "",
     "## Pages",
     "",
-    `- [Home](${site.url}/)`,
-    `- [Work](${site.url}/work)`,
-    `- [Projects](${site.url}/projects)`,
-    `- [Thoughts](${site.url}/thoughts)`,
-    `- [About](${site.url}/about)`,
+    `- [Home](${absoluteUrl("/")})`,
+    `- [Work](${absoluteUrl("/work")})`,
+    `- [Projects](${absoluteUrl("/projects")})`,
+    `- [Thoughts](${absoluteUrl("/thoughts")})`,
+    `- [About](${absoluteUrl("/about")})`,
     "",
   ].join("\n");
 }

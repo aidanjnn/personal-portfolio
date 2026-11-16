@@ -49,6 +49,12 @@ export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }
 
+/** The Project's own page, which every Project has. */
+export function projectPageHref(project: Project): string {
+  return `/projects/${project.slug}`;
+}
+
+/** Where lists send a visitor: the external url when there is one, else the page. */
 export function projectHref(project: Project): string {
-  return project.url ?? `/projects/${project.slug}`;
+  return project.url ?? projectPageHref(project);
 }

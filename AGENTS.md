@@ -81,6 +81,6 @@ Run the smallest check that covers the change. Do not run a full build to valida
 
 - `app/` — routing only: layouts, pages, and Next.js special files.
 - `components/` — shared UI. `components/site/` is chrome (header, footer).
-- `content/` — domain data and its accessors (`site`, `intro`, `listWork`, `currentWork`, `listProjects`, `getProject`, `projectHref`, `listThoughts`, `getThought`, `thoughtHref`, `buildPortfolio`). Pages compose; they don't own this data.
+- `content/` — domain data and its accessors (`site`, `absoluteUrl`, `intro`, `listWork`, `currentWork`, `listProjects`, `getProject`, `projectHref`, `projectPageHref`, `listThoughts`, `getThought`, `thoughtHref`, `buildPortfolio`). Pages compose; they don't own this data.
 - `scripts/` — Node scripts run outside Next.js (`export:portfolio`, `check:portfolio`).
 - Domain language lives in `CONTEXT.md`.

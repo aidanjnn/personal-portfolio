@@ -1,6 +1,6 @@
 import { intro, type IntroStyle } from "./intro";
 import { listProjects, projectHref } from "./projects";
-import { site } from "./site";
+import { absoluteUrl, site } from "./site";
 import { listThoughts, thoughtHref } from "./thoughts";
 import { getUpdatedLabel } from "./updated";
 import { listWork } from "./work";
@@ -45,8 +45,8 @@ export type Portfolio = {
   webring: { previous: string; home: string; next: string };
 };
 
-function fullUrl(href: string): string {
-  return href.startsWith("/") ? `${site.url}${href}` : href;
+function optionalUrl(href: string | undefined): string | null {
+  return href === undefined ? null : absoluteUrl(href);
 }
 
 export async function buildPortfolio(): Promise<Portfolio> {
@@ -56,14 +56,14 @@ export async function buildPortfolio(): Promise<Portfolio> {
     name: site.name,
     web: site.url,
     intro: intro.map((paragraph) =>
-      paragraph.map(({ text, style, url }) => ({ text, style, url: url ?? null })),
+      paragraph.map(({ text, style, url }) => ({ text, style, url: optionalUrl(url) })),
     ),
     work: listWork().map(({ year, company, role, description, url }) => ({
       year,
       company,
       role,
       description,
-      url,
+      url: absoluteUrl(url),
     })),
     projects: listProjects().map((project) => ({
       slug: project.slug,
@@ -71,23 +71,23 @@ export async function buildPortfolio(): Promise<Portfolio> {
       event: project.event ?? null,
       summary: project.summary,
       year: project.year,
-      url: fullUrl(projectHref(project)),
+      url: absoluteUrl(projectHref(project)),
     })),
     thoughts: listThoughts().map((thought) => ({
       slug: thought.slug,
       title: thought.title,
       subtitle: thought.subtitle,
       year: thought.year,
-      url: fullUrl(thoughtHref(thought)),
+      url: absoluteUrl(thoughtHref(thought)),
       sections: thought.sections.map(({ heading, items }) => ({
         heading,
-        items: items.map(({ text, href }) => ({ text, url: href ?? null })),
+        items: items.map(({ text, href }) => ({ text, url: optionalUrl(href) })),
       })),
     })),
     webring: {
-      previous: site.webring.prev,
-      home: site.webring.href,
-      next: site.webring.next,
+      previous: absoluteUrl(site.webring.prev),
+      home: absoluteUrl(site.webring.href),
+      next: absoluteUrl(site.webring.next),
     },
   };
 }
