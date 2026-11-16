@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # export:portfolio needs module.registerHooks and type stripping (Node 22.15+).
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # A clean checkout has no .next/, so generate the route types
+      # (PageProps, LayoutProps) and next-env.d.ts that tsc needs.
+      - run: npx next typegen
+
+      - run: npx tsc --noEmit
+
+      - run: npm run lint
+
+      # Runs the terminal portfolio's Rust validator from its public GHCR image.
+      - run: npm run check:portfolio
