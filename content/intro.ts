@@ -7,6 +7,8 @@ export type IntroSpan = {
   text: string;
   style: IntroStyle;
   url?: string;
+  /** Site-only: buildPortfolio leaves it out, since the terminal rejects unknown fields. */
+  logo?: string;
 };
 
 export type IntroParagraph = readonly IntroSpan[];
@@ -29,7 +31,7 @@ export const intro: readonly IntroParagraph[] = [
       text: "Most recently built agents for regulated finance, changing the mortgage industry with ",
       style: "plain",
     },
-    { text: work.company, style: "accent", url: work.url },
+    { text: work.company, style: "accent", url: work.url, logo: work.logo },
     { text: " in SF with great people!", style: "plain" },
   ],
   [

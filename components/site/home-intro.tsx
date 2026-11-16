@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import { intro, type IntroSpan, type IntroStyle } from "@/content/intro";
 import { getUpdatedLabel } from "@/content/updated";
-import { currentWork } from "@/content/work";
 
 function TextLink({
   href,
@@ -38,11 +37,10 @@ const styleClass: Record<Exclude<IntroStyle, "plain">, string> = {
 
 function IntroText({ span }: { span: IntroSpan }) {
   const accent = span.style === "accent";
-  // Accent marks the current Work, so it carries that Work's logo.
-  const content = accent ? (
+  const content = span.logo ? (
     <>
       <Image
-        src={currentWork().logo}
+        src={span.logo}
         alt=""
         width={16}
         height={16}
