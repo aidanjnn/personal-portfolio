@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Node scripts, not markup: keep their words out of the generated utilities. */
+@source not "../scripts";
+
 :root {
   color-scheme: light;
   --canvas: #ffffff;

@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
-import { site } from "@/content/site";
+import { intro, type IntroSpan, type IntroStyle } from "@/content/intro";
 import { getUpdatedLabel } from "@/content/updated";
-import { currentWork } from "@/content/work";
 
 function TextLink({
   href,
@@ -29,9 +28,50 @@ function TextLink({
   );
 }
 
-export async function HomeIntro() {
-  const work = currentWork();
-  const updatedLabel = await getUpdatedLabel();
+const styleClass: Record<Exclude<IntroStyle, "plain">, string> = {
+  strong: "font-semibold",
+  emphasis: "font-semibold italic",
+  accent: "font-semibold text-accent",
+  highlight: "font-semibold underline decoration-faint underline-offset-2",
+};
+
+function IntroText({ span }: { span: IntroSpan }) {
+  const accent = span.style === "accent";
+  const content = span.logo ? (
+    <>
+      <Image
+        src={span.logo}
+        alt=""
+        width={16}
+        height={16}
+        unoptimized
+        className="mr-1.5 inline-block size-[1em] rounded-[3px] object-contain align-[-0.15em]"
+      />
+      {span.text}
+    </>
+  ) : (
+    span.text
+  );
+
+  // An accent link takes its styling from TextLink, not a wrapper span.
+  const styled =
+    span.style === "plain" || (accent && span.url) ? (
+      content
+    ) : (
+      <span className={styleClass[span.style]}>{content}</span>
+    );
+
+  return span.url ? (
+    <TextLink href={span.url} accent={accent}>
+      {styled}
+    </TextLink>
+  ) : (
+    styled
+  );
+}
+
+export function HomeIntro() {
+  const updatedLabel = getUpdatedLabel();
 
   return (
     <div className="flex flex-1 flex-col">
@@ -39,49 +79,13 @@ export async function HomeIntro() {
         <p className="mb-8 text-[12.5px] text-date">{updatedLabel}</p>
       ) : null}
       <div className="space-y-8 text-[15px] leading-[1.75] text-mute">
-        <p>
-          I&apos;m a{" "}
-          <TextLink href={site.softwareEngineering}>
-            Software Engineering
-          </TextLink>{" "}
-          student at the{" "}
-          <span className="font-semibold italic">University of Waterloo</span>
-          , focused on agent infrastructure and dabbling into physical AI.
-        </p>
-        <p>
-          Most recently built agents for regulated finance, changing the mortgage
-          industry with{" "}
-          <TextLink href={work.url} accent>
-            <Image
-              src={work.logo}
-              alt=""
-              width={16}
-              height={16}
-              unoptimized
-              className="mr-1.5 inline-block size-[1em] rounded-[3px] object-contain align-[-0.15em]"
-            />
-            {work.company}
-          </TextLink>{" "}
-          in SF with great people!
-        </p>
-        <p>
-          Previously, I was the youngest ever engineering intern (15) at
-          Vancouver&apos;s largest hospital. In this stage of my life, I{" "}
-          <span className="font-semibold underline decoration-faint underline-offset-2">
-            seek to achieve greatness
-          </span>{" "}
-          in every single thing I touch!
-        </p>
-        <p>
-          I split my time across SF, Toronto, and Vancouver. Outside of work, I
-          like long walks, football, and finding sunset views.
-        </p>
-        <p>
-          Open to internships + full-time roles. You can find me on <TextLink href={site.social.x.href}>X</TextLink>,{" "}
-          <TextLink href={site.social.linkedin.href}>LinkedIn</TextLink>,{" "}
-          <TextLink href={site.social.github.href}>GitHub</TextLink>, or reach me via{" "}
-          <TextLink href={site.social.email.href}>email</TextLink>.
-        </p>
+        {intro.map((paragraph, p) => (
+          <p key={p}>
+            {paragraph.map((span, s) => (
+              <IntroText key={s} span={span} />
+            ))}
+          </p>
+        ))}
       </div>
       <p className="flex flex-1 items-center justify-center text-[15px] leading-snug text-faint">
         <span aria-hidden="true" className="mr-2">
